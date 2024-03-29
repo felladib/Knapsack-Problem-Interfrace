@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}" />
+
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-GLgpV6oXN9si5vNv7QlH2rRvFrG8HJ3TdKt38a9+qLPnJ/njv66eew+8Xuh2rc0D" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <i class="bx bx-menu menu-icon"></i>
+        <span class="logo-name">MKP</span>
+      </div>
+      <div class="sidebar">
+        <div class="logo">
+          <i class="bx bx-menu menu-icon"></i>
+          <span class="logo-name">MKP</span>
+        </div>
+
+        <!-- <div class="sidebar-content">
+          <ul class="lists">
+            <li class="list">
+              <a href="../" class="nav-link">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="link">Home</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../simulation/" class="nav-link">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="link">Simulation</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../exprementation/" class="nav-link">
+                <i class="bx bx-bell icon"></i>
+                <span class="link">Experimentation</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../algorithms/" class="nav-link">
+                <i class="bx bx-message-rounded icon"></i>
+                <span class="link">algorithms</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../about/" class="nav-link">
+                <i class="bx bx-pie-chart-alt-2 icon"></i>
+                <span class="link">About</span>
+              </a>
+            </li>
+           
+          </ul>
+
+          <div class="bottom-cotent">
+            
+          </div>
+        </div> -->
+      </div>
+    </nav>
+    <section class="overlay">
+    </section>
+
+    <div class="home_content">
+        <div class="head">
+            <!-- le titre avec une def de problem  -->
+            <p >Multi-Knapsack Problem</p>
+            <p >The Multi-Knapsack Problem is a combinatorial optimization problem in mathematics and computer science. It is an extension of the classic Knapsack Problem, which involves selecting items to maximize the value within a fixed weight constraint.
+        </div>
+        <div class="image">
+          <img src="">
+        </div>  
+        <div class="sac_objt">
+            <!-- la table sac :  -->
+            <div class="sac">
+            <table>
+              <tr>
+                  <th>Sac </th>
+                  <th>Capcity</th>
+                  <th>Delete</th>
+              </tr>
+              
+              {% if sacs %}
+                      {% for sac in sacs %}
+                        <tr>
+                          <td>sac {{ sac.ids_ac}}</td>
+                          <td>{{ sac.capacity_sac}}</td>
+                          <td>
+                            <form action="{% url 'delete_sac' sac.ids_ac %}" method="post">
+                              {% csrf_token %}
+                              <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                        </td>
+                        </tr>
+                      {% endfor %}
+              {% endif %}
+          </table>
+          <button id="openModalBtnsac"><i class="fa-solid fa-plus"></i></button>
+
+              <div id="myModalsac" class="modalsac">
+                <div class="modal-contentsac">
+                  <span class="closesac">&times;</span>
+                  <div class="add_btn_contentsac">
+                    <p class="btn_add_titlesac"> Add a New KnapSack </p>
+                    <label for="numerosac">KnapSack Number:</label>
+                    <input type="text" id="numerosac" name="numerosac" placeholder="  KnapSack Number">
+                    <label for="valeursac">KnapSack Capacity:</label>
+                    <input type="text" id="valeursac" name="valeursac" placeholder="  KnapSack Capacity ">
+
+                    <div class="btn_add_btnsSac">
+                        <button id="addBtnSac">Add</button>
+                        <button id="cancelBtnSac">Cancel</button>
+                    </div>
+                  </div>    
+                </div>
+              </div>
+            </div>
+        
+            <!-- la table objet :  -->
+            <div class="object">
+              
+                <table>
+                    <tr>
+                        <th>Object</th>
+                        <th>Weight</th>
+                        <th>Value </th>
+                        <th>Delete</th>
+                    </tr>
+                    {% if objets %}
+                      {% for objet in objets %}
+                        <tr>
+                          <td>objet {{ objet.id_obj}}</td>
+                          <td>{{ objet.poid_obj}}</td>
+                          <td>{{ objet.value_obj}}</td>
+                          <td>
+                            <form action="{% url 'delete_obj' objet.id_obj %}" method="post">
+                              {% csrf_token %}
+                              <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                          </td>                        
+                        </tr>
+                      {% endfor %}
+                    {% endif %}
+                    
+                </table>
+                <!-- add button  -->
+                <button id="openModalBtn"><i class="fa-solid fa-plus"></i></button>
+
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="add_btn_content">
+                            <p class="btn_add_title"> Add a New Object </p>
+                            <label for="numero">Object number:</label>
+                            <input type="text" id="numero" name="numero" placeholder="  Object number">
+                            <label for="valeur">Object value:</label>
+                            <input type="text" id="valeur" name="valeur" placeholder="  Object value">
+                            <label for="poids">Object weight:</label>
+                            <input type="text" id="poids" name="poids" placeholder=" Object weight">
+                            <div class="btn_add_btns">
+                                <button id="addBtn">Add</button>
+                                <button id="cancelBtn">Cancel</button>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+        
+            </div>
+        
+        </div>
+
+        
+        <button class="get-started-btn"><a href="../simulation"> Get Started <i class="fa-solid fa-arrow-right"></i></a></button>
+    </div>
+
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+
+
+  </body>
+</html>
+
+
+

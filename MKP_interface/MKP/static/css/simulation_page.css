@@ -1,0 +1,382 @@
+
+.algo_choices{
+    padding: 1rem;
+    /* width: 100%; */
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .algo_choices label{
+    padding: 7px;
+    
+
+  }
+  /* Style général pour le select */
+  select {
+    align-content: center;
+    margin-left: 5px;
+    padding: 8px;
+    font-size: 16px;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+    appearance: none; /* Pour désactiver le style par défaut du navigateur */
+    /* background-color: #fff; Couleur de fond */
+    border-color: #7b79ff; ; 
+    background-color: #212134;
+    
+  }
+  
+  /* Style lorsque le select est survolé */
+  /* select:hover {
+    border-color: #212134;
+  } */
+  
+  /* Style lorsque le select est activé */
+  select:focus {
+    outline: none;
+    /* border-color: #555; */
+    border-color: #7b79ff;
+    /* box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1); */
+  }
+  select .opt{
+  border: none;
+  border-color: #212134;
+  background-color: #212134;
+  }
+  select .opt:hover {
+  border-color: #7b79ff;
+  background-color: #7b79ff;
+  }
+  
+
+*{
+    color:white;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    /* margin-top: 1rem;   */
+    align-self: center;
+    color: rgb(214, 210, 210);
+
+}
+.title p{ 
+    color:white;
+    color: #b7d4e2;
+    align-items: center;
+    text-decoration:none;
+    text-align: center;
+    line-height: 2rem;
+    letter-spacing: -0.04rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.title i {
+    padding-top: 0.5rem;
+    margin-right: 0.3rem; 
+    color:white ;
+    font-size: 19px;
+}
+.title img{
+    padding-top: 0.5rem;
+    margin-right: 0.3rem; 
+    /* color:white ; */
+    /* font-size: 19px; */
+    height: 29px;
+    width: 29px;
+}
+
+.simulation_container {
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.param{
+    position: fixed;
+    top: 4rem;
+    background-color: #212134;
+    padding-top: 5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    height: 100%; 
+    /* position: fixed;  */
+}
+.res{
+    flex: 3; 
+    margin-left: 20rem;
+}
+
+.obj_sac_number{
+    display: flex;
+    flex-direction: column;
+   
+}
+.obj_sac_number label{
+    padding-top: 5px;
+    padding-bottom: 3px;
+    align-self:center;
+}
+.obj_sac_number input{
+    
+    text-align: center;
+    align-self: center;
+    height: 39.7px;
+    border-radius: 5px;
+    width: 75% ;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: #212134;
+    border: 1px solid;
+    border-color: #7b79ff;
+    color: white;
+    /* color: #181826; */
+}
+
+.run {
+    align-self: center;
+    padding-top: 10px;
+}
+.run button{
+   
+    background-color: #7b79ff;
+    border: none;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.run button:hover {
+    background-color: #5c59cc;
+}
+
+/* partie 2: */
+.res{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rem;
+    align-items: center;
+    /* justify-content: space-between;  */
+    
+}
+.res_head p {
+    margin-bottom: 50px;
+    color:white;
+    align-items: center;
+    text-decoration:none;
+    text-align: center;
+    line-height: 2rem;
+    letter-spacing: -0.04rem;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.temps_exe p{
+    /* margin-bottom: 50px; */
+    color:white;
+    align-items: center;
+    text-decoration:none;
+    text-align: center;
+    line-height: 2rem;
+    letter-spacing: 0.01rem;
+    font-weight: 500;
+    font-size: 2rem;
+}
+.number_noeud p{
+    color:white;
+    align-items: center;
+    text-decoration:none;
+    text-align: center;
+    line-height: 2rem;
+    letter-spacing: 0.01rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+/* .table_obj{
+    border-collapse: collapse;
+    border: none;
+
+} */
+.table_obj tr{
+    background-color: #212134;
+}
+.table_obj tr td:first-child{
+    background-color: #7b79ff;
+    border-radius: 3px 0 0 3px;
+}
+
+
+
+
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: auto; /* Une seule colonne */
+    grid-template-rows: auto auto; /* Deux lignes */
+    gap: 20px;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1.5fr; /* Les trois sections ont des largeurs différentes */
+    gap: 12px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.execution-time {
+    grid-column: 1; /* Première colonne */
+    /* background-color:#7c7bac;
+    background: linear-gradient(to right, rgba(33, 33, 52, 0.8), rgba(255, 255, 255, 0.8)); 
+    background: linear-gradient(to right, rgba(33, 33, 52, 0.8), rgba(24, 24, 38, 0.8), rgba(123, 121, 255, 0.8)); */
+    display: flex;
+    flex-direction: column; /* Pour empiler les éléments verticalement */
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+
+.node-count {
+    grid-column: 2; /* Deuxième colonne */
+    /* background-color: #93d5f6; */
+    /* background-color: #9b9ade;  */
+    /* background: linear-gradient(to right, rgba(33, 33, 52, 0.8), rgba(24, 24, 38, 0.8), rgba(123, 121, 255, 0.8)); */
+    display: flex;
+    flex-direction: column; /* Pour empiler les éléments verticalement */
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid white; */
+    border-radius: 5px;
+    padding: 7px;
+
+}
+
+.total-value {
+    grid-column: 3; /* Troisième colonne */
+    /* background-color: #7195a7;    */
+    /* background-color:#9593f9; */
+    /* background: linear-gradient(to right, rgba(33, 33, 52, 0.8), rgba(24, 24, 38, 0.8), rgba(123, 121, 255, 0.8)); */
+    display: flex;
+    flex-direction: column; /* Pour empiler les éléments verticalement */
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+
+}
+.sac-details{
+    padding: 3px; 
+    /* background-color: #212134;   */
+    display: grid;
+    /* gap: 20px; */
+}
+
+.sac-details h2{
+    padding-top: 10px;
+}
+.sac-details-res {
+    border: 1px solid #7b79ff;
+
+    background-color: #212134;
+    margin: 15px 0px 15px 0px ;
+    height: 45px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-between; /* Aligne les éléments sur les bords du conteneur */
+    align-items: center; /* Centre les éléments verticalement */
+}
+
+.sac-content {
+    display: flex;
+    flex-grow: 1; /* Permet au contenu de prendre autant d'espace que possible */
+    justify-content: center; /* Centre le contenu horizontalement */
+
+}
+
+.sac-head p{
+    /* background-color: #7b79ff; */
+    height: 45px;
+    padding: 10px;
+    border-radius: 7px 0px 0px 7px;
+    border: 1px solid #7b79ff;
+} 
+.sac-total{
+    padding: 7px;
+}
+
+.backHome{
+   
+    /* align-items: flex-end;
+    align-self: flex-end; */
+
+    position: fixed; 
+    bottom: 2rem ;  
+    left: 7rem;  
+    text-align: center;
+
+}
+.go_back {
+    background-color: #7b79ff; /*Couleur de fond
+    color: black; /* Couleur du texte */
+    border: none; /* Supprimer la bordure */
+    padding: 5px 10px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de la police */
+    cursor: pointer; /* Curseur de la souris au survol */
+    border-radius: 5px; /* Ajouter des coins arrondis */
+   
+    
+}
+.go_back a{
+    text-decoration: none;
+}
+.go_back i{
+    margin: 2px;
+}
+.go_back:hover {
+    background-color: #5c59cc; /* Couleur de fond au survol */
+}
+
+
+
+.execution-time {
+    background: linear-gradient(to right, rgba(255, 138, 0, 0.7), rgba(229, 46, 113, 0.7));
+    /* Autres styles */
+}
+
+.total-value {
+    background: linear-gradient(to right, rgba(75, 108, 183, 0.7), rgba(24, 40, 72, 0.7));
+    /* Autres styles */
+}
+
+.node-count {
+    background: linear-gradient(to right, rgba(46, 204, 113, 0.7), rgba(52, 152, 219, 0.7));
+    /* Autres styles */
+}
+
+.container{
+    display: none;
+}
+
+.sac-details{
+    display: none;
+}
+
+
+
+
+#placeholder-content img {
+    align-self: center;
+    border-radius: 70px; /* Arrondir également les coins de l'image */
+    /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); Ombre intérieure avec une couleur noire semi-transparente */
+}

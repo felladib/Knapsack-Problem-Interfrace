@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.sqlite3
+
+
+MKP_env/
+.env
+*.env
+
+
+db.sqlite3

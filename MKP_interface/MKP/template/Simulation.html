@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Simulation</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <!-- <link rel="stylesheet" href="{% static 'css/simulation.css' %}" /> -->
+    <link rel="stylesheet" href="{% static 'css/simulation_page.css' %}"/>
+
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <i class="bx bx-menu menu-icon"></i> 
+        <span class="logo-name">MKP</span>
+      </div>
+      <!-- <div class="sidebar">
+        <div class="logo">
+          <i class="bx bx-menu menu-icon"></i>
+          <span class="logo-name">MKP</span>
+        </div>
+
+        <div class="sidebar-content">
+          <ul class="lists">
+            <li class="list">
+              <a href="../" class="nav-link">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="link">Home</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../simulation/" class="nav-link">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="link">Simulation</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../exprementation/" class="nav-link">
+                <i class="bx bx-bell icon"></i>
+                <span class="link">Experimentation</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../algorithms/" class="nav-link">
+                <i class="bx bx-message-rounded icon"></i>
+                <span class="link">algorithms</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="../about/" class="nav-link">
+                <i class="bx bx-pie-chart-alt-2 icon"></i>
+                <span class="link">About</span>
+              </a>
+            </li>
+            
+          </ul>
+
+          <div class="bottom-cotent">
+            
+          </div>
+        </div> 
+      </div> -->
+    </nav>
+
+    <section class="overlay">
+    </section>
+
+    <div class="simulation_container ">
+
+      <div class="param">
+        <div class="title">
+          <!-- <i class="fa-solid fa-gears"></i>  -->
+          <!-- <i class="fa-solid fa-gear"></i>  -->
+
+          <img src="{% static 'assets\settings.png' %}" alt="">
+          <p>parameters</p>
+         
+        </div>
+        <div class="algo_choices">
+          <label for="algorithm">Choose an algorithm  </label>
+          <select id="algorithm" name="algorithm">
+              <option class="opt" value="dfs">DFS (Depth-First Search)</option>
+              <option class="opt" value="bfs">BFS (Breadth-First Search)</option>
+              <option class="opt" value="astar">A* (A-Star)</option>
+              <option class="opt" value="genetic">Algorithme génétique</option>
+          </select>
+        </div>  
+        <div class="obj_sac_number">
+          <label for="sac">Number's Sacs</label>
+          <input type="text" name="sac" id="sac" placeholder="sac">
+          <label for="objet">Number's Objets</label>
+          <input type="text" name="objet" id="objet" placeholder="objet">
+        </div>
+        <div class="run" id="btnRun">
+          <button>Run</button>
+        </div>
+
+        <div class="backHome">
+          <button class="go_back"><a href="../Home"> <i class="fa-solid fa-arrow-left"></i> Back </a></button>
+        </div>
+        
+      </div>
+
+      <div class="res">
+        
+        <div class="res_head">
+          <p>Multi Knapsack Problem Simulator</p>
+        </div>
+        <div id="placeholder-content">
+          <img src="{% static 'assets\iAe.gif' %}" alt="Chargement en cours..."> <!-- Remplacez 'loading.gif' par votre image de chargement -->
+         
+        </div>
+        <div>
+          <div class="container">
+            <div class="top-row">
+                <section class="execution-time">
+                    <h2>Execution Time</h2>
+                    <p id="execution-time">0 seconds</p>
+                </section>
+                <section class="node-count">
+                    <h2>Node Count</h2>
+                    <p id="node-count">0</p>
+                </section>
+                <section class="total-value">
+                  <h2>Total Value </h2>
+                  <p id="total-value"></p>
+                </section>
+            </div>
+            
+            <section class="sac-details">
+                <h2>Sac Details</h2>
+                <div id="sac-details-body">
+                  
+                  
+                </div>
+            </section>
+        </div>
+        </div>
+        
+       
+
+        
+        
+      </div>
+
+      
+    </div>
+
+
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/simulation.js' %}"></script>
+
+  </body>
+</html>
