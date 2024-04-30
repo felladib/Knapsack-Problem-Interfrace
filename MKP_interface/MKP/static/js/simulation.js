@@ -61,6 +61,9 @@ const createElementSac = (sac , configuration , valeurs_objets , i) =>{
 
 
 const traitement_result = (data) => {
+
+    console.log('je suis dans le data traitement')
+    // console.log(data)
     placeholderContent = document.getElementById('placeholder-content') ;
     placeholderContent.style.display = 'none'; 
     
@@ -77,6 +80,8 @@ const traitement_result = (data) => {
     const totalValueLastChild = max_val.lastElementChild;
 
     console.log(data.execution_time)
+    console.log(data.best_configurations)
+    console.log(data.max_value)
     // Modifier la valeur du dernier enfant
     if (data.execution_time < 1) {
         executionTimeLastChild.textContent = (data.execution_time * 1000).toFixed(2) + ' milliseconds';
@@ -88,9 +93,14 @@ const traitement_result = (data) => {
     totalValueLastChild.textContent = data.max_value;
 
     // remplire la table des objet 
+    
+    let configuration; // Déclarer configuration en dehors du bloc if/else
 
-    const configuration = data.best_configurations[0]
-    console.log(configuration)
+    if (data.best_configurations.length != 2) {
+        configuration = data.best_configurations[0];
+    } else {
+        configuration = data.best_configurations;
+    }
 
     const sac_details_body = document.getElementById('sac-details-body')
     sac_details_body.innerHTML = ''; 
@@ -113,7 +123,6 @@ const traitement_result = (data) => {
     container.style.display = "block";
 
     
-    
 }
 
 
@@ -122,7 +131,10 @@ btnRun.addEventListener("click" , function() {
     var algorithm = document.getElementById('algorithm').value;
     var sacs = document.getElementById('sac').value;
     var objets = document.getElementById('objet').value;
-
+    console.log(algorithm)
+    console.log(sacs)
+    console.log(objets)
+    console.log('please wait !!!!!')
 
     // Désactivez les champs d'entrée et le bouton "Run"
     algorithm.disabled = true;
@@ -146,6 +158,8 @@ btnRun.addEventListener("click" , function() {
     .then(data => {
         // Traiter les résultats renvoyés par la vue Django
         // traitement sur les données retourner
+        // console.log('data')
+       
         traitement_result(data);
         // Afficher les résultats sur la page
         //reactiver les button :
