@@ -1,6 +1,6 @@
 # MKP - Projet de Résolution du Problème du Sac à Dos
 
-Ce projet vise à résoudre le Problème du Sac à Dos (Knapsack Problem) en utilisant différents algorithmes d'optimisation, tels que DFS, BFS, A*, et génétique, dans le cadre d'une application Django.
+Ce projet vise à résoudre le Problème du Sac à Dos (Knapsack Problem) en utilisant différents algorithmes d'optimisation, tels que DFS, BFS, A*,BSO et génétique, dans le cadre d'une application Django.
 
 ## Aperçu
 
