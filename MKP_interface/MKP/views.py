@@ -491,6 +491,45 @@ def tournament_knapsack_selection(population, evaluations, tournament_size):
 
 
 
+
+
+# def knapsack_mutation(solution, knapsacks_capacity, items):
+#     mutated_solution = solution.copy()
+#     kps_capacity = knapsacks_capacity.copy()
+
+#     knapsacks_weight = [sum(items[item_index][0] for item_index in knapsack) for knapsack in mutated_solution]
+
+#     for i in range(len(kps_capacity)):
+#         kps_capacity[i] -= knapsacks_weight[i]
+
+#     # Choisir aléatoirement 2 sacs pour permuter leurs objets
+#     knapsack_index1, knapsack_index2 = random.sample(range(len(solution)), 2)
+    
+#     # vérifier que les 2 sacs contiennent des objets et si la permutation est possible (la capacité n'est pas dépassée)
+#     if mutated_solution[knapsack_index1] and mutated_solution[knapsack_index2]:
+#         # choix du sac aléatoire
+#         item_index1 = random.choice(range(len(mutated_solution[knapsack_index1])))
+#         item_index2 = random.choice(range(len(mutated_solution[knapsack_index2])))
+        
+#         item_to_swap1 = mutated_solution[knapsack_index1][item_index1]
+#         item_to_swap2 = mutated_solution[knapsack_index2][item_index2]
+        
+#         # Vérifier que la permutation est valide
+#         if (kps_capacity[knapsack_index1] + items[item_to_swap1][0] - items[item_to_swap2][0] >= 0 and
+#             kps_capacity[knapsack_index2] + items[item_to_swap2][0] - items[item_to_swap1][0] >= 0):
+#             # Mettre à jour la capacité des sacs
+#             kps_capacity[knapsack_index1] += items[item_to_swap2][0] - items[item_to_swap1][0]
+#             kps_capacity[knapsack_index2] += items[item_to_swap1][0] - items[item_to_swap2][0]
+#             # Permuter les objets
+#             mutated_solution[knapsack_index1][item_index1] = item_to_swap2
+#             mutated_solution[knapsack_index2][item_index2] = item_to_swap1
+
+            
+#     # print(mutated_solution,"\n")
+#     return mutated_solution
+
+
+
 def knapsack_mutation(solution, knapsacks_capacity, items):
     mutated_solution = solution.copy()
     kps_capacity = knapsacks_capacity.copy()
@@ -500,31 +539,46 @@ def knapsack_mutation(solution, knapsacks_capacity, items):
     for i in range(len(kps_capacity)):
         kps_capacity[i] -= knapsacks_weight[i]
 
-    # Choisir aléatoirement 2 sacs pour permuter leurs objets
-    knapsack_index1, knapsack_index2 = random.sample(range(len(solution)), 2)
-    
-    # vérifier que les 2 sacs contiennent des objets et si la permutation est possible (la capacité n'est pas dépassée)
-    if mutated_solution[knapsack_index1] and mutated_solution[knapsack_index2]:
-        # choix du sac aléatoire
-        item_index1 = random.choice(range(len(mutated_solution[knapsack_index1])))
-        item_index2 = random.choice(range(len(mutated_solution[knapsack_index2])))
+    # Le nombre des permutations echouée
+    unsuccessful_attempts = 0
+
+    #Réessayer une autre permutation
+    while unsuccessful_attempts < 12:
+
+        # Choisir aléatoirement 2 sacs pour permuter leurs objets
+        knapsack_index1, knapsack_index2 = random.sample(range(len(solution)), 2)
         
-        item_to_swap1 = mutated_solution[knapsack_index1][item_index1]
-        item_to_swap2 = mutated_solution[knapsack_index2][item_index2]
-        
-        # Vérifier que la permutation est valide
-        if (kps_capacity[knapsack_index1] + items[item_to_swap1][0] - items[item_to_swap2][0] >= 0 and
-            kps_capacity[knapsack_index2] + items[item_to_swap2][0] - items[item_to_swap1][0] >= 0):
-            # Mettre à jour la capacité des sacs
-            kps_capacity[knapsack_index1] += items[item_to_swap2][0] - items[item_to_swap1][0]
-            kps_capacity[knapsack_index2] += items[item_to_swap1][0] - items[item_to_swap2][0]
-            # Permuter les objets
-            mutated_solution[knapsack_index1][item_index1] = item_to_swap2
-            mutated_solution[knapsack_index2][item_index2] = item_to_swap1
+        # vérifier que les 2 sacs contiennent des objets et si la permutation est possible (la capacité n'est pas dépassée)
+        if mutated_solution[knapsack_index1] and mutated_solution[knapsack_index2]:
+            # choix du sac aléatoire
+            item_index1 = random.choice(range(len(mutated_solution[knapsack_index1])))
+            item_index2 = random.choice(range(len(mutated_solution[knapsack_index2])))
+            
+            item_to_swap1 = mutated_solution[knapsack_index1][item_index1]
+            item_to_swap2 = mutated_solution[knapsack_index2][item_index2]
+            
+            # Vérifier que la permutation est valide
+            if (kps_capacity[knapsack_index1] + items[item_to_swap1][0] - items[item_to_swap2][0] >= 0 and
+                kps_capacity[knapsack_index2] + items[item_to_swap2][0] - items[item_to_swap1][0] >= 0):
+                # Mettre à jour la capacité des sacs
+                kps_capacity[knapsack_index1] += items[item_to_swap2][0] - items[item_to_swap1][0]
+                kps_capacity[knapsack_index2] += items[item_to_swap1][0] - items[item_to_swap2][0]
+                # Permuter les objets
+                mutated_solution[knapsack_index1][item_index1] = item_to_swap2
+                mutated_solution[knapsack_index2][item_index2] = item_to_swap1
+                break  # permutation possible => Sortir de la boucle
+
+        # Incrémenter le compteur du nombre de permutations echouées
+        unsuccessful_attempts += 1
 
             
-    # print(mutated_solution,"\n")
+    print(mutated_solution,"\n")
     return mutated_solution
+
+
+
+
+
 
 
 def knapsack_crossover(parent1, parent2):
@@ -642,6 +696,8 @@ def knapsack_genetic_algorithm(N, MaxGen, items, knapsacks_capacity):
     
     # Retourner le meilleur individu
     return best_solution(pop, evaluations)
+
+
 
 
 # /////////////////////////////////BSO///////////////////////////////
