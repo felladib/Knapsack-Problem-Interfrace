@@ -29,13 +29,14 @@ Une fois le serveur lancé, accédez à l'interface web de l'application à l'ad
 
 ## Technologies utilisées
 
-- Python
-- Django
-- HTML/CSS
-- JavaScript
+- **Python**
+- **Django**
+- **HTML/CSS**
+- **JavaScript**
 
 ## Contributeurs
 - [Fella DIB](github.com/felladib)
+- [Lina IGHILAZA](github.com/liAghZn)
 
 
 ## Licence
